@@ -1,0 +1,8 @@
+{% macro note_header(item, item_link=false) -%}
+{% if item_link -%}
+<h1 class="post-title"><a href="{{ item.permalink }}">{{ item.title }}</a></h1>
+{%- else -%}
+<h1 class="post-title">{{ item.title }}</h1>
+{%- endif %}
+<span class="post-date">{{ item.date | date(format="%Y-%m-%d") }}</span>
+{%- endmacro note_header %}
