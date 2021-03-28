@@ -14,6 +14,7 @@
       <link rel="stylesheet" href="{{ get_url(path="print.css", trailing_slash=false) }}" media="print">
       <link rel="stylesheet" href="{{ get_url(path="poole.css", trailing_slash=false) }}">
       <link rel="stylesheet" href="{{ get_url(path="hyde.css", trailing_slash=false) }}">
+      <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
       {% if config.generate_feed %}
@@ -44,6 +45,20 @@
                         {% endfor %}
                         {% endblock sidebar_nav %}
                     </ul>
+                    
+                    {% if config.extra.profile_links %}
+                    <span>
+                      {% for link in config.extra.profile_links %}
+                      <a rel="me" href="{{ link.url }}" title="{{ link.title }}">
+                          {%- if link.iconset -%}
+                              <i class="{{ link.iconset }} {{ 'fa-' ~ link.icon }}"></i>
+                          {%- else -%}
+                              <i class="fab {{ 'fa-' ~ link.icon }}"></i>
+                          {%- endif -%}
+                      </a>{% if not loop.last %} | {% endif %}
+                      {% endfor %}
+                    </span>
+                    {% endif %}
                 </div>
             </div>
         {% endblock sidebar %}
