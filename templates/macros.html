@@ -6,3 +6,13 @@
 {%- endif %}
 <span class="post-date">{{ item.date | date(format="%Y-%m-%d") }}</span>
 {%- endmacro note_header %}
+
+{% macro item_list(items) -%}
+<div class="posts">
+    {% for page in items %}
+      <div class="post">
+        {{ macros::note_header(item=page, item_link=true) }}
+      </div>
+    {% endfor %}
+</div>
+{%- endmacro item_list %}
